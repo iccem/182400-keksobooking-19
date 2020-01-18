@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Лилия Филиппова](https://up.htmlacademy.ru/javascript/19/user/182400).
-* Наставник: `Неизвестно`.
+* Наставник: [Андрей Столпнер](https://htmlacademy.ru/profile/stolpnera).
 
 ---
 
