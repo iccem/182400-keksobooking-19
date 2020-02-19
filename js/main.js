@@ -2,8 +2,6 @@
 
 var NUMBER_OBJECTS = 8;
 var TYPE = ['palace', 'flat', 'house', 'bungalo'];
-var LOCATION_X = 600;
-var LOCATION_Y = 350;
 var CHECK_IN = ['12:00', '13:00', '14:00'];
 var CHECK_OUT = ['12:00', '13:00', '14:00'];
 var FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
@@ -13,7 +11,7 @@ var PHOTOS = [
   'http://o0.github.io/assets/images/tokyo/hotel2.jpg'
 ];
 
-function showMap () {
+function showMap() {
   var map = document.querySelector('.map');
   map.classList.remove('map--faded');
 }
@@ -25,25 +23,24 @@ var getRandomNumber = function (min, max) {
 var getWidthFrame = function () {
   var m = document.querySelector('.map');
   return getComputedStyle(m).width;
-}
+};
 
 var getWidthPin = function () {
   var m = document.querySelector('.map__pin');
   return getComputedStyle(m).width;
-}
+};
 
 var getHeightPin = function () {
   var m = document.querySelector('.map__pin');
   return getComputedStyle(m).height;
-}
+};
 
 var getRandomArray = function (arr) {
   var e = getRandomNumber(1, arr.length);
   var tempArr = arr.slice(0);
   var randomresultArr = [];
-  for (var i = 0; i < e; i++)
-  {
-    var t = getRandomNumber(0, tempArr.length-1);
+  for (var i = 0; i < e; i++) {
+    var t = getRandomNumber(0, tempArr.length - 1);
     randomresultArr.push(tempArr[t]);
     tempArr.splice(t, 1);
   }
@@ -92,7 +89,6 @@ function renderPin(offer) {
   var similarPinTemplate = document.querySelector('#pin')
     .content
     .querySelector('.map__pin');
-    
   var pinElement = similarPinTemplate.cloneNode(true);
   pinElement.style.left = offer.location.x + 'px';
   pinElement.style.top = offer.location.y + 'px';
