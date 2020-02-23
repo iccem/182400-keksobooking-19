@@ -67,7 +67,7 @@ function renderObject(i, frameWidth, pinWidth) {
       photos: getRandomArray(PHOTOS), // 'массив строк случайной длины адреса фотографий http://o0.github.io/assets/images/tokyo/hotel1.jpg'
     },
     location: {
-      x: getRandomNumber((1 + (pinWidth / 2)), (frameWidth - (pinWidth / 2))), // 'случайное число, координата x метки на карте. Значение ограничено размерами блока, в котором перетаскивается метка',
+      x: getRandomNumber((0 - (pinWidth / 2)), (frameWidth + (pinWidth / 2))), // 'случайное число, координата x метки на карте. Значение ограничено размерами блока, в котором перетаскивается метка',
       y: getRandomNumber(130, 630) // 'случайное число, координата y метки на карте от 130 до 630'
     }
   };
