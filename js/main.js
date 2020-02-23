@@ -30,11 +30,6 @@ var getWidthPin = function () {
   return getComputedStyle(m).width;
 };
 
-var getHeightPin = function () {
-  var m = document.querySelector('.map__pin');
-  return getComputedStyle(m).height;
-};
-
 var getRandomArray = function (arr) {
   var e = getRandomNumber(1, arr.length);
   var tempArr = arr.slice(0);
@@ -48,7 +43,7 @@ var getRandomArray = function (arr) {
 };
 
 var getRandomElementArray = function (arr) {
-  var e = getRandomNumber(0, arr.length-1);
+  var e = getRandomNumber(0, arr.length - 1);
   return arr[e];
 };
 
@@ -72,7 +67,7 @@ function renderObject(i, frameWidth, pinWidth) {
       photos: getRandomArray(PHOTOS), // 'массив строк случайной длины адреса фотографий http://o0.github.io/assets/images/tokyo/hotel1.jpg'
     },
     location: {
-      x: getRandomNumber((1 + (pinWidth/2)), (frameWidth - (pinWidth/2))), // 'случайное число, координата x метки на карте. Значение ограничено размерами блока, в котором перетаскивается метка',
+      x: getRandomNumber((1 + (pinWidth / 2)), (frameWidth - (pinWidth / 2))), // 'случайное число, координата x метки на карте. Значение ограничено размерами блока, в котором перетаскивается метка',
       y: getRandomNumber(130, 630) // 'случайное число, координата y метки на карте от 130 до 630'
     }
   };
