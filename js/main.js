@@ -38,16 +38,21 @@ var getHeightPin = function () {
 var getRandomArray = function (arr) {
   var e = getRandomNumber(1, arr.length);
   var tempArr = arr.slice(0);
-  var randomresultArr = [];
+  var randomResultArr = [];
   for (var i = 0; i < e; i++) {
     var t = getRandomNumber(0, tempArr.length - 1);
-    randomresultArr.push(tempArr[t]);
+    randomResultArr.push(tempArr[t]);
     tempArr.splice(t, 1);
   }
-  return randomresultArr;
+  return randomResultArr;
 };
 
-function renderObject(i, w, pW, pH) {
+var getRandomElementArray = function (arr) {
+  var e = getRandomNumber(0, arr.length-1);
+  return arr[e];
+};
+
+function renderObject(i, frameWidth, pinWidth) {
   i++;
   var object = {
     author: {
@@ -57,18 +62,18 @@ function renderObject(i, w, pW, pH) {
       title: 'строка, заголовок предложения',
       address: 'LOCATION_X' + ', ' + 'LOCATION_Y', // '600, 350',
       price: getRandomNumber(10, 10000), // 'число, стоимость',
-      TYPE: getRandomNumber(0, TYPE.length), // 'строка с одним из четырёх фиксированных значений: palace, flat, house или bungalo',
+      type: getRandomElementArray(TYPE), // 'строка с одним из четырёх фиксированных значений: palace, flat, house или bungalo',
       rooms: getRandomNumber(1, 10), // 'число, количество комнат',
       guests: getRandomNumber(1, 10), // 'число, количество гостей, которое можно разместить',
-      CHECK_IN: getRandomNumber(0, CHECK_IN.length), // 'строка с одним из трёх фиксированных значений: 12:00, 13:00 или 14:00,',
-      CHECK_OUT: getRandomNumber(0, CHECK_OUT.length), // 'строка с одним из трёх фиксированных значений: 12:00, 13:00 или 14:00',
-      FEATURES: getRandomArray(FEATURES), // 'массив строк случайной длины wifi dishwasher parking washer elevator conditioner',
+      checkIn: getRandomElementArray(CHECK_IN), // 'строка с одним из трёх фиксированных значений: 12:00, 13:00 или 14:00,',
+      checkOut: getRandomElementArray(CHECK_OUT), // 'строка с одним из трёх фиксированных значений: 12:00, 13:00 или 14:00',
+      features: getRandomArray(FEATURES), // 'массив строк случайной длины wifi dishwasher parking washer elevator conditioner',
       description: 'строка с описанием',
-      PHOTOS: getRandomArray(PHOTOS), // 'массив строк случайной длины адреса фотографий http://o0.github.io/assets/images/tokyo/hotel1.jpg'
+      photos: getRandomArray(PHOTOS), // 'массив строк случайной длины адреса фотографий http://o0.github.io/assets/images/tokyo/hotel1.jpg'
     },
     location: {
-      x: getRandomNumber((100 + pW), (w - pW)), // 'случайное число, координата x метки на карте. Значение ограничено размерами блока, в котором перетаскивается метка',
-      y: getRandomNumber((130 + pH), (630 - pH)) // 'случайное число, координата y метки на карте от 130 до 630'
+      x: getRandomNumber((1 + (pinWidth/2)), (frameWidth - (pinWidth/2))), // 'случайное число, координата x метки на карте. Значение ограничено размерами блока, в котором перетаскивается метка',
+      y: getRandomNumber(130, 630) // 'случайное число, координата y метки на карте от 130 до 630'
     }
   };
   return object;
@@ -76,11 +81,10 @@ function renderObject(i, w, pW, pH) {
 
 function createArray() {
   var offerList = [];
-  var w = parseInt(getWidthFrame(), 10);
-  var pW = parseInt(getWidthPin(), 10);
-  var pH = parseInt(getHeightPin(), 10);
+  var frameWidth = parseInt(getWidthFrame(), 10);
+  var pinWidth = parseInt(getWidthPin(), 10);
   for (var i = 0; i < NUMBER_OBJECTS; i++) {
-    offerList [i] = renderObject(i, w, pW, pH);
+    offerList [i] = renderObject(i, frameWidth, pinWidth);
   }
   return offerList;
 }
