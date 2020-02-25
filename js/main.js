@@ -111,14 +111,13 @@ var renderElements = function () {
   var offerList = createArray();
   renderPinsList(offerList);
   renderCards(offerList);
-}
+};
 
 var renderCard = function (offerList) {
   var cardTemplate = document.querySelector('#card')
   .content
   .querySelector('.popup');
   var card = cardTemplate.cloneNode(true);
-  var theOffer = offerList[0];
   var featuresList = theOffer.offer.features;
   var photosList = theOffer.offer.photos;
 
@@ -141,18 +140,18 @@ var renderCard = function (offerList) {
     return type;
   }
 
-  var theType = getRussianType(theOffer);
+  var theType = getRussianType(offerList[0]);
 
-  function getRoomsGuestsString (rooms, guests) {
+  function getRoomsGuestsString(rooms, guests) {
     var tempGuest = guests === 1 ? 'гостя' : 'гостей';
-    
+
     var tempRoom = 'комнат';
     if (rooms === 1) {
       tempRoom = tempRoom + 'а';
     } else if ((rooms > 1) && (rooms < 5)) {
       tempRoom = tempRoom + 'ы';
     }
-    return rooms + ' ' + tempRoom + ' для '+ guests + ' ' + tempGuest;;
+    return rooms + ' ' + tempRoom + ' для ' + guests + ' ' + tempGuest;
   }
 
   var stringRoomGuest = getRoomsGuestsString(theOffer.offer.rooms, theOffer.offer.guests);
@@ -167,7 +166,7 @@ var renderCard = function (offerList) {
   card.querySelector('.popup__avatar').setAttribute('scr', theOffer.author.avatar);
 
   card.querySelector('.popup__features').textContent = 'features';
-  for(var i = 0; i < featuresList.length; i++) {
+  for (var i = 0; i < featuresList.length; i++) {
     var feature = document.createElement('li');
     feature.className = 'popup__features-' + featuresList[i];
     feature.innerHTML = featuresList[i];
@@ -175,15 +174,15 @@ var renderCard = function (offerList) {
   }
 
   card.querySelector('.popup__photos').textContent = 'photos';
-  for(var i = 0; i < photosList.length; i++) {
+  for(var ii = 0; ii < photosList.length; ii++) {
     var photo = document.createElement('img');
     photo.className = 'popup__photo';
-    photo.scr = photosList[i];
+    photo.scr = photosList[ii];
     card.querySelector('.popup__photos').appendChild(photo);
   }
 
   return card;
-}
+};
 
 function renderCards(offerList) {
   var map = document.querySelector('.map');
