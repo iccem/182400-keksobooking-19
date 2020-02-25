@@ -122,9 +122,9 @@ var renderCard = function (offerList) {
   var featuresList = theOffer.offer.features;
   var photosList = theOffer.offer.photos;
 
-  function getRussianType(theOffer) {
+  function getRussianType(of) {
     var type;
-    switch (theOffer.offer.type) {
+    switch (of.offer.type) {
       case 'flat':
         type = 'Квартира';
         break;
@@ -175,7 +175,7 @@ var renderCard = function (offerList) {
   }
 
   card.querySelector('.popup__photos').textContent = 'photos';
-  for(var ii = 0; ii < photosList.length; ii++) {
+  for (var ii = 0; ii < photosList.length; ii++) {
     var photo = document.createElement('img');
     photo.className = 'popup__photo';
     photo.scr = photosList[ii];
