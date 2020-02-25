@@ -118,6 +118,7 @@ var renderCard = function (offerList) {
   .content
   .querySelector('.popup');
   var card = cardTemplate.cloneNode(true);
+  var theOffer = offerList[0];
   var featuresList = theOffer.offer.features;
   var photosList = theOffer.offer.photos;
 
@@ -140,7 +141,7 @@ var renderCard = function (offerList) {
     return type;
   }
 
-  var theType = getRussianType(offerList[0]);
+  var theType = getRussianType(theOffer);
 
   function getRoomsGuestsString(rooms, guests) {
     var tempGuest = guests === 1 ? 'гостя' : 'гостей';
